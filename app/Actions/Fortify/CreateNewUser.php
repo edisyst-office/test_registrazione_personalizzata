@@ -30,6 +30,7 @@ class CreateNewUser implements CreatesNewUsers
             'terms' => Jetstream::hasTermsAndPrivacyPolicyFeature() ? ['required', 'accepted'] : '',
             'role_id' => 'required',                        //AGGIUNGO QUESTI ALLA REGISTRAZIONE
             'licence_number' => ['required', 'min:5'],      //AGGIUNGO QUESTI ALLA REGISTRAZIONE
+            '_answer' => 'required|simple_captcha',         //AGGIUNGO QUESTI ALLA REGISTRAZIONE
         ])->validate();
 
         return DB::transaction(function () use ($input) {
